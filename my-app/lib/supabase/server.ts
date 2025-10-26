@@ -1,8 +1,9 @@
 import { cookies } from 'next/headers';
 import { createServerClient } from '@supabase/ssr';
 
+// Version async (corrige l'erreur "get" sur Promise<ReadonlyRequestCookies>)
 export const createSupabaseServer = async () => {
-  const cookieStore = await cookies(); // <- await nécessaire sur ta version
+  const cookieStore = await cookies();
   return createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
